@@ -1,0 +1,35 @@
+package codingoffer;
+
+public class Solution4 {
+	public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
+        if(pre == null || pre.length == 0 || in == null || in.length == 0){
+            return null;
+        }
+        return reConstruct(pre, in, 0, pre.length-1, 0, in.length-1);
+    }
+    
+    public TreeNode reConstruct(int[] pre, int[] in, int startpre, int endpre, int startin, int endin){
+        
+        if(startpre > endpre || startin > endin)
+            return null;
+        
+        TreeNode temp = new TreeNode(pre[startpre]);
+        for(int index = startin; index <= endin; index++){
+            if(in[index] == pre[startpre]){
+                temp.left = reConstruct(pre, in, startpre+1, index-startin+startpre, startin, index-1);
+                temp.right = reConstruct(pre, in, index-startin+startpre+1, endpre, index+1, endin);
+            }
+        }
+        return temp;
+    }
+}
+
+class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+    }
+}
