@@ -1,0 +1,6 @@
+select salaries.emp_no, salaries.salary, salaries.from_date, salaries.to_date, dept_manager.dept_no
+from salaries left join dept_manager on dept_manager.emp_no = salaries.emp_no
+where salaries.to_date = '9999-01-01' and dept_manager.to_date = '9999-01-01'
+
+#由于输出顺序是按照emp_no递增来的，join时salaries表要放在前面，否则输出顺序不对
+#由于两个表都有重复数据，所以两个表的to_date都要做限制

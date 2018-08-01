@@ -1,0 +1,6 @@
+select
+    s.last_name, s.first_name, d.dept_no
+from
+    employees as s left join dept_emp as d
+on
+    d.emp_no = s.emp_no

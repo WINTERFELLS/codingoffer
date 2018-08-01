@@ -1,0 +1,21 @@
+sqlexercise01		查找最晚入职员工的所有信息
+sqlexercise02		查找入职员工时间排名倒数第三的员工所有信息
+sqlexercise03		查找当前薪水详情以及部门编号dept_no
+sqlexercise04		查找所有已经分配部门的员工的last_name和first_name
+sqlexercise05		查找所有员工的last_name和first_name以及对应部门编号dept_no
+sqlexercise06		查找所有员工入职时候的薪水情况
+sqlexercise07		查找薪水涨幅超过15次的员工号emp_no以及其对应的涨幅次数t
+sqlexercise08		找出所有员工当前薪水salary情况
+sqlexercise09		获取所有部门当前manager的当前薪水情况
+sqlexercise10		获取所有非manager的员工emp_no
+sqlexercise11		获取所有员工当前的manager
+sqlexercise12		获取所有部门中当前员工薪水最高的相关信息
+
+sqlexercise13		从titles表获取按照title进行分组
+sqlexercise14		从titles表获取按照title进行分组，注意对于重复的emp_no进行忽略。
+sqlexercise15		查找employees表
+sqlexercise16		查找employees表所有emp_no为奇数
+sqlexercise17		统计出当前各个title类型对应的员工当前薪水对应的平均工资
+sqlexercise18		获取当前薪水第二多的员工的emp_no以及其对应的薪水salary
+sqlexercise19		查找当前薪水(to_date='9999-01-01')排名第二多的员工编号emp_no、薪水salary、last_name以及first_name，不准使用order by
+sqlexercise20		查找所有员工的last_name和first_name以及对应的dept_name
