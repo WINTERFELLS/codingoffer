@@ -15,7 +15,7 @@ package codingoffer;
 		或者 dp[i][j] = dp[i][j-1] // a*匹配1次
 		或者 dp[i][j] = dp[i-1][j] // a*匹配多次
 */
-public class Solution50 {
+public class Solution51 {
     public boolean match(char[] str, char[] pattern)
     {
         boolean[][] dp = new boolean[str.length+1][pattern.length+1];
