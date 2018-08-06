@@ -1,0 +1,38 @@
+package codingoffer;
+
+import java.util.ArrayList;
+
+/*
+给定一棵二叉搜索树，请找出其中的第k小的结点。例如， （5，3，7，2，4，6，8）    中，按结点数值大小顺序第三小结点的值为4。
+*/
+
+public class Solution61 {
+    int count = 0;
+    public PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    public PriorityQueue<Integer> maxHeap = new PriorityQueue<>(10, new Comparator<Integer>(){
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o2 - o1;
+        }
+    });
+    public void Insert(Integer num) {
+        if(count % 2 == 0){
+            maxHeap.offer(num);
+            int filterMaxNum = maxHeap.poll();
+            minHeap.offer(filterMaxNum);
+        }else{
+            minHeap.offer(num);
+            int filterMinNum = minHeap.poll();
+            maxHeap.offer(filterMinNum);
+        }
+        count++;
+    }
+
+    public Double GetMedian() {
+        if(count%2 == 0){
+            return new Double((minHeap.peek()+maxHeap.peek()))/2;
+        }else{
+            return new Double(minHeap.peek());
+        }
+    }
+}
