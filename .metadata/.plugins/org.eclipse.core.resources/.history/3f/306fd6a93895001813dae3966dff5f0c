@@ -1,8 +1,0 @@
-select emp_no, count(emp_no) as t from salaries
-group by emp_no having t>15
-
-
-#1、用COUNT()函数和GROUP BY语句可以统计同一emp_no值的记录条数
-#2、根据题意，输出的涨幅次数为t，故用AS语句将COUNT(emp_no)的值转换为t
-#3、由于WHERE后不可跟COUNT()函数，故用HAVING语句来限定t>15的条件
-#4、最后存在一个理解误区，涨幅超过15次，

@@ -1,0 +1,69 @@
+package codingoffer;
+
+/*
+ * 请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，
+ * 每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则之后不能再次进入这个格子。
+ *  例如 a b c e s f c s a d e e 这样的3 X 4 矩阵中包含一条字符串"bcced"的路径，但是矩阵中不包含"abcb"路径，
+ *  因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。
+*/
+
+public class Solution63 {
+	public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
+        if(matrix == null || matrix.length == 0){
+            return false;
+        }
+        int index = 0;
+        char[][] matrixs = new char[rows][cols];
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                matrixs[i][j] = matrix[index];
+                index++;
+            }
+        }
+        
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                if(matrixs[i][j] == str[0]){
+                    int[][] flag = new int[rows][cols];
+                    flag[i][j] = 1;
+                    if(dfs(i,j,matrixs,str,1,flag)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean dfs(int i, int j, char[][] matrix, char[] str, int index, int[][] flag){
+        if(index == str.length){
+            return true;
+        }else{
+            char next = str[index];
+            if(i-1 >= 0 && flag[i-1][j] != 1 && matrix[i-1][j] == next){
+                flag[i-1][j] = 1;
+                if(dfs(i-1,j,matrix,str,index+1,flag))
+                    return true;
+                flag[i-1][j] = 0;
+            }
+            if(i+1 < matrix.length && flag[i+1][j] != 1 && matrix[i+1][j] == next){
+                flag[i+1][j] = 1;
+                if(dfs(i+1,j,matrix,str,index+1,flag))
+                    return true;
+                flag[i+1][j] = 0;
+            }
+            if(j-1 >= 0 && flag[i][j-1] != 1 && matrix[i][j-1] == next){
+                flag[i][j-1] = 1;
+                if(dfs(i,j-1,matrix,str,index+1,flag))
+                    return true;
+                flag[i][j-1] = 0;
+            }
+            if(j+1 < matrix[0].length && flag[i][j+1] != 1 && matrix[i][j+1] == next){
+                flag[i][j+1] = 1;
+                if(dfs(i,j+1,matrix,str,index+1,flag))
+                    return true;
+                flag[i][j+1] = 0;
+            }
+            return false;
+        }
+    } 
+}

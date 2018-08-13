@@ -1,6 +1,0 @@
-select salary from salaries  where to_date='9999-01-01' group by salary order by salary desc;
-
-SELECT DISTINCT salary FROM salaries WHERE to_date = '9999-01-01' ORDER BY salary DESC
-
-#不同记录数较小时，count group by性能普遍高于count distinct，尤其对于text类型表现的更明显。
-#而对于不同记录数较大的场景，count group by性能反而低于直接count distinct。

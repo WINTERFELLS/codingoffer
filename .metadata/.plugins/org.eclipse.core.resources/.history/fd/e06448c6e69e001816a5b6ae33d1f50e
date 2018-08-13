@@ -1,0 +1,38 @@
+package code;
+
+import java.util.Scanner;
+
+public class Test1{
+	public static void main(String[] args) {
+		Scanner console = new Scanner(System.in);
+		int n = console.nextInt();
+		for(int i = 0; i < n; i++){
+			int input = console.nextInt();
+			int res = cal(input);
+			System.out.println(res);
+		}
+	}
+
+	private static int cal(int input) {
+		int res = 0;
+		input -= 5000;
+		if(input > 80000){
+			res += (input-80000)*0.45+20840;
+		}else if(input > 55000){
+			res += (input-55000)*0.35+12090;
+		}else if(input > 35000){
+			res += (input-35000)*0.3+6090;
+		}else if(input > 25000){
+			res += (input-25000)*0.25+3590;
+		}else if(input > 12000){
+			res += (input-12000)*0.2+990;
+		}else if(input > 3000){
+			res += (input-3000)*0.1+90;
+		}else if(input > 0){
+			res += input*0.03;
+		}else{
+			res = 0;
+		}
+		return res;
+	}
+}
