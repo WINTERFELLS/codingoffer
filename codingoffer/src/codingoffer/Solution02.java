@@ -1,25 +1,31 @@
 package codingoffer;
 /*
- * ÇëÊµÏÖÒ»¸öº¯Êý£¬½«Ò»¸ö×Ö·û´®ÖÐµÄ¿Õ¸ñÌæ»»³É¡°%20¡±¡£ÀýÈç£¬µ±×Ö·û´®ÎªWe Are Happy.Ôò¾­¹ýÌæ»»Ö®ºóµÄ×Ö·û´®ÎªWe%20Are%20Happy¡£
+ * è¯·å®žçŽ°ä¸€ä¸ªå‡½æ•°ï¼Œå°†ä¸€ä¸ªå­—ç¬¦ä¸²ä¸­çš„ç©ºæ ¼æ›¿æ¢æˆâ€œ%20â€ã€‚ä¾‹å¦‚ï¼Œå½“å­—ç¬¦ä¸²ä¸ºWe Are Happy.åˆ™ç»è¿‡æ›¿æ¢ä¹‹åŽçš„å­—ç¬¦ä¸²ä¸ºWe%20Are%20Happyã€‚
  */
 public class Solution02 {
-	public boolean Find(int target, int [][] array) {
-        if(array == null || array.length == 0){
-            return false;
+    public String replaceSpace(StringBuffer str) {
+    	if(str == null || str.length() == 0){
+            return "";
         }
-        int lenrow = array.length;
-        int lencol = array[0].length;
-        int i = lenrow-1;
-        int j = 0;
-        while(i >= 0 && j < lencol){
-            if(array[i][j] == target){
-                return true;
-            }else if(array[i][j] < target){
-                j++;
-            }else if(array[i][j] > target){
-                i--;
+        int len = str.length();
+        int count = 0;
+        for(int i = 0; i < str.length(); i++){
+            if(str.charAt(i) == ' '){
+                count += 2;
             }
         }
-        return false;
+        str.setLength(len+count);
+        int index = len-1;
+        for(int i = str.length()-1; i >= 0; i--,index--){
+            if(str.charAt(index) == ' '){
+                str.setCharAt(i, '0');
+                str.setCharAt(i-1, '2');
+                str.setCharAt(i-2, '%');
+                i -= 2;
+            }else{
+                str.setCharAt(i, str.charAt(index));
+            }
+        }
+        return str.toString();
     }
 }
