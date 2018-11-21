@@ -1,32 +1,26 @@
 package codingoffer;
 
 /*
- * ÔÚÒ»¸ö¶şÎ¬Êı×éÖĞ£¬Ã¿Ò»ĞĞ¶¼°´ÕÕ´Ó×óµ½ÓÒµİÔöµÄË³ĞòÅÅĞò£¬Ã¿Ò»ÁĞ¶¼°´ÕÕ´ÓÉÏµ½ÏÂµİÔöµÄË³ĞòÅÅĞò¡£ÇëÍê³ÉÒ»¸öº¯Êı£¬ÊäÈëÕâÑùµÄÒ»¸ö¶şÎ¬Êı×éºÍÒ»¸öÕûÊı£¬ÅĞ¶ÏÊı×éÖĞÊÇ·ñº¬ÓĞ¸ÃÕûÊı¡£
+ * åœ¨ä¸€ä¸ªäºŒç»´æ•°ç»„ä¸­ï¼Œæ¯ä¸€è¡Œéƒ½æŒ‰ç…§ä»å·¦åˆ°å³é€’å¢çš„é¡ºåºæ’åºï¼Œæ¯ä¸€åˆ—éƒ½æŒ‰ç…§ä»ä¸Šåˆ°ä¸‹é€’å¢çš„é¡ºåºæ’åºã€‚è¯·å®Œæˆä¸€ä¸ªå‡½æ•°ï¼Œè¾“å…¥è¿™æ ·çš„ä¸€ä¸ªäºŒç»´æ•°ç»„å’Œä¸€ä¸ªæ•´æ•°ï¼Œåˆ¤æ–­æ•°ç»„ä¸­æ˜¯å¦å«æœ‰è¯¥æ•´æ•°ã€‚
  */
 public class Solution01 {
-    public String replaceSpace(StringBuffer str) {
-    	if(str == null || str.length() == 0){
-            return "";
+    public boolean Find(int target, int [][] array) {
+        if(array == null || array.length == 0){
+            return false;
         }
-        int len = str.length();
-        int count = 0;
-        for(int i = 0; i < str.length(); i++){
-            if(str.charAt(i) == ' '){
-                count += 2;
+        int lenrow = array.length;
+        int lencol = array[0].length;
+        int i = lenrow-1;
+        int j = 0;
+        while(i >= 0 && j < lencol){
+            if(array[i][j] == target){
+                return true;
+            }else if(array[i][j] < target){
+                j++;
+            }else if(array[i][j] > target){
+                i--;
             }
         }
-        str.setLength(len+count);
-        int index = len-1;
-        for(int i = str.length()-1; i >= 0; i--,index--){
-            if(str.charAt(index) == ' '){
-                str.setCharAt(i, '0');
-                str.setCharAt(i-1, '2');
-                str.setCharAt(i-2, '%');
-                i -= 2;
-            }else{
-                str.setCharAt(i, str.charAt(index));
-            }
-        }
-        return str.toString();
+        return false;
     }
 }
